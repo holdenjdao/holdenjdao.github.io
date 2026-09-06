@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 258">
-  <!-- gray ground: thin wedge from far left sweeping up to the right peak apex -->
-  <path fill="#8F8F8F" d="M2 186 C90 172 170 140 248 42 C234 106 218 152 236 186 Z"/>
-  <!-- left mountain, small peak + tall main peak, sits on the gray -->
-  <path fill="#8E1537" d="M18 178 L96 56 L126 96 L170 24 L232 172 C200 158 120 172 18 178 Z"/>
-  <!-- right peak, concave left edge hugging the gray path -->
-  <path fill="#8E1537" d="M252 38 C258 100 244 150 224 186 L370 186 Z"/>
-  <text x="190" y="244" font-family="Arial, Helvetica, sans-serif" font-size="50" font-weight="800" fill="#8E1537" text-anchor="middle" letter-spacing="0">UTAH AI LAB</text>
-</svg>
