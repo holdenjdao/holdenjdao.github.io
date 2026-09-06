@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Holden Dao</title>
+  <meta name="description" content="Holden Dao — Electrical Engineering student at the University of Utah building embedded systems, RF projects, and AI infrastructure." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Interactive grid background -->
+  <canvas id="grid-bg" aria-hidden="true"></canvas>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav-wrap">
+    <nav class="nav">
+      <a class="logo" href="#home">HD<span class="logo-cursor">_</span></a>
+      <div class="nav-links">
+        <a href="#home" class="active">Home</a>
+        <a href="#experience">Work</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="home">
+      <div class="hero-card">
+        <span class="chip">&#8853; ABOUT ME</span>
+        <h1>hey, I'm Holden <span class="wave">&#128075;</span></h1>
+        <p class="tagline">Electrical Engineering student at the University of Utah building
+          embedded systems, RF ground stations, and AI infrastructure.</p>
+
+        <div class="mission-card">
+          <span class="chip small">&#9889; MY MISSION</span>
+          <p>Bridging hardware and software — from PCB traces and RF front-ends to
+            production AI pipelines.</p>
+          <p class="motto"><em>Measure twice, solder once. &#9889;</em></p>
+        </div>
+      </div>
+
+      <!-- Live GitHub stats (fetched client-side; falls back to dashes offline) -->
+      <div class="stat-strip">
+        <div class="stat"><span class="stat-num" data-stat="stars">–</span> stars</div>
+        <div class="stat"><span class="stat-num" data-stat="contributions">–</span> contributions</div>
+        <div class="stat"><span class="stat-num" data-stat="repos">–</span> repositories</div>
+        <div class="stat"><span class="stat-num" data-stat="followers">–</span> GitHub followers</div>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="section" id="about">
+      <h2>About me<span class="cursor">_</span></h2>
+      <div class="about-card">
+        <p>I'm an Electrical Engineering major with a Computer Science minor at the
+          University of Utah (Class of 2028), currently working as a Product Engineer
+          at the Utah AI Lab.</p>
+        <p>My path so far has run from quantifying traumatic brain injuries in a research
+          lab, to designing PCBs for the U.S. Air Force, to building multi-agent LLM
+          inference infrastructure — I like working wherever hardware meets software.</p>
+        <p>When I'm not in the lab, I'm probably pulling weather-satellite imagery out of
+          the sky with an antenna I built myself.</p>
+        <div class="btn-row">
+          <a class="btn primary" href="https://github.com/holdenjdao" target="_blank" rel="noopener">View my GitHub</a>
+          <a class="btn ghost" href="#contact">Contact me</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ GITHUB ACTIVITY ============ -->
+    <section class="section" id="activity">
+      <span class="chip">&#9632; GITHUB ACTIVITY</span>
+      <p class="contrib-count"><span data-stat="contributions2">–</span> contributions in the last year</p>
+      <div class="contrib-graph" id="contrib-graph" aria-label="GitHub contribution graph"></div>
+      <div class="contrib-legend">Less <span class="cell l0"></span><span class="cell l1"></span><span class="cell l2"></span><span class="cell l3"></span><span class="cell l4"></span> More</div>
+
+      <div class="big-stats">
+        <div class="big-stat"><span class="big-num">4.0</span><span class="big-label">GPA</span></div>
+        <div class="big-stat"><span class="big-num">May 2028</span><span class="big-label">B.S. EE &middot; CS Minor</span></div>
+        <div class="big-stat"><span class="big-num">Utah AI Lab</span><span class="big-label">Currently At</span></div>
+      </div>
+    </section>
+
+    <!-- ============ EXPERIENCE ============ -->
+    <section class="section" id="experience">
+      <h2>Experience<span class="cursor">_</span></h2>
+      <p class="section-sub">From brain-trauma research to Air Force hardware to production AI systems.</p>
+
+      <article class="xp-card">
+        <div class="xp-head">
+          <div class="xp-logo">AI</div>
+          <div>
+            <h3>Product Engineer</h3>
+            <p class="xp-company">Utah AI Lab</p>
+            <p class="xp-meta">Jul 2026 – Present &middot; Salt Lake City, UT</p>
+          </div>
+        </div>
+        <ul>
+          <li>Built a multi-agent LLM inference routing framework with vLLM and CUDA to cut
+            token costs for local businesses by up to 25%, leveraging KV-caching and RAG
+            techniques while preserving response quality.</li>
+          <li>Maintain AI production servers with DevSecOps and CI/CD pipelines, employing
+            Docker and Kubernetes for 99% server uptime.</li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag">vLLM</span><span class="tag">CUDA</span><span class="tag">RAG</span>
+          <span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">CI/CD</span>
+        </div>
+      </article>
+
+      <article class="xp-card">
+        <div class="xp-head">
+          <div class="xp-logo">AF</div>
+          <div>
+            <h3>Electrical Engineering Intern</h3>
+            <p class="xp-company">United States Air Force</p>
+            <p class="xp-meta">Jun 2026 – Aug 2026 &middot; Hill Air Force Base, UT</p>
+          </div>
+        </div>
+        <ul>
+          <li>Served as team lead for two projects covering cybersecurity and embedded
+            system design.</li>
+          <li>Designed PCB layouts in KiCAD for motor ESC hardware of counter unmanned
+            aerial systems (C-UAS).</li>
+          <li>Created a digital candle-lighting FSM system with Raspberry Pi and ESP32
+            microcontrollers in C++ over I2C, Bluetooth, and Wi-Fi.</li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag">KiCAD</span><span class="tag">C++</span><span class="tag">ESP32</span>
+          <span class="tag">Raspberry Pi</span><span class="tag">I2C</span><span class="tag">PCB Design</span>
+        </div>
+      </article>
+
+      <article class="xp-card">
+        <div class="xp-head">
+          <div class="xp-logo">HT</div>
+          <div>
+            <h3>Research Assistant</h3>
+            <p class="xp-company">Utah Head Trauma Lab</p>
+            <p class="xp-meta">Jun 2023 – Aug 2023 &middot; Salt Lake City, UT</p>
+          </div>
+        </div>
+        <ul>
+          <li>Processed 2,500+ brain tissue scans in MATLAB using DIC analysis and C++ to
+            quantify stress factors of the infant skull, advancing understanding of
+            traumatic brain injuries.</li>
+          <li>Created and presented a research poster and technical documentation for the
+            Department of Mechanical Engineering and biomechanics literature.</li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag">MATLAB</span><span class="tag">C++</span><span class="tag">DIC Analysis</span>
+        </div>
+      </article>
+
+      <div class="btn-row center">
+        <a class="btn ghost" href="https://www.linkedin.com/in/holdendao" target="_blank" rel="noopener">View full resume on LinkedIn</a>
+      </div>
+    </section>
+
+    <!-- ============ EDUCATION ============ -->
+    <section class="section" id="education">
+      <h2>Education<span class="cursor">_</span></h2>
+      <article class="xp-card">
+        <div class="xp-head">
+          <div class="xp-logo">U</div>
+          <div>
+            <h3>University of Utah</h3>
+            <p class="xp-company">B.S. Electrical Engineering &middot; Computer Science Minor &middot; 4.0 GPA</p>
+            <p class="xp-meta">Expected May 2028 &middot; Salt Lake City, UT</p>
+          </div>
+        </div>
+        <ul>
+          <li><strong>Coursework:</strong> DSP, DSA, Semiconductors, Electromagnetics, Analog Circuit Design</li>
+          <li><strong>Honors:</strong> Distinguished Eccles Scholar, Honors Program, GenAI Hackathon Winner</li>
+          <li><strong>Activities:</strong> IEEE, Amateur Radio Club, Formula SAE, CubeSat, Entrepreneurship Club</li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- ============ PROJECTS ============ -->
+    <section class="section" id="projects">
+      <h2>Featured Projects<span class="cursor">_</span></h2>
+      <p class="section-sub">Hands-on builds where the software has to survive contact with real hardware.</p>
+
+      <article class="project-card">
+        <div class="project-preview"><span class="preview-emoji">&#128752;&#65039;</span></div>
+        <div class="project-body">
+          <h3>Weather Satellite Imaging Receiver</h3>
+          <p class="xp-meta">RF &middot; DSP &middot; Ground Station</p>
+          <p>A DSP pipeline built in GNU Radio and CST Studio that filters, demodulates,
+            synchronizes, decodes, and reconstructs METEOR M2-4 weather-satellite
+            transmissions into Earth imagery. The physical ground station runs on an
+            RTL-SDR with a hand-built V-dipole antenna, FIR filtering, and FM
+            demodulation — achieving &gt;90% successful image reconstruction across
+            5 continents.</p>
+          <div class="tag-row">
+            <span class="tag">GNU Radio</span><span class="tag">RTL-SDR</span><span class="tag">DSP</span>
+            <span class="tag">CST Studio</span><span class="tag">RF</span>
+          </div>
+          <div class="btn-row">
+            <a class="btn ghost" href="https://github.com/holdenjdao" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-preview"><span class="preview-emoji">&#128205;</span></div>
+        <div class="project-body">
+          <h3>GPS Tracking Device</h3>
+          <p class="xp-meta">Embedded &middot; Firmware</p>
+          <p>An embedded GPS tracker prototyped in C and Rust on an ESP32 with a NEO-6M
+            module, capturing real-time coordinates, speed, and altitude with 99%
+            accuracy.</p>
+          <div class="tag-row">
+            <span class="tag">C</span><span class="tag">Rust</span><span class="tag">ESP32</span>
+            <span class="tag">NEO-6M</span><span class="tag">UART</span>
+          </div>
+          <div class="btn-row">
+            <a class="btn ghost" href="https://github.com/holdenjdao" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+      </article>
+
+      <p class="center-note">Want to see more?</p>
+      <div class="btn-row center">
+        <a class="btn ghost" href="https://github.com/holdenjdao?tab=repositories" target="_blank" rel="noopener">More Projects</a>
+      </div>
+    </section>
+
+    <!-- ============ TECHNOLOGIES ============ -->
+    <section class="section" id="tech">
+      <h2>Technologies I use<span class="cursor">_</span></h2>
+      <p class="section-sub">Some of the languages, tools, and hardware I work with:</p>
+      <div class="tech-grid">
+        <span class="tech">C</span>
+        <span class="tech">C++</span>
+        <span class="tech">C#</span>
+        <span class="tech">Rust</span>
+        <span class="tech">Python</span>
+        <span class="tech">Java</span>
+        <span class="tech">SQL</span>
+        <span class="tech">Linux</span>
+        <span class="tech">Git</span>
+        <span class="tech">Docker</span>
+        <span class="tech">Kubernetes</span>
+        <span class="tech">MATLAB</span>
+        <span class="tech">KiCAD</span>
+        <span class="tech">Altium Designer</span>
+        <span class="tech">LabVIEW</span>
+        <span class="tech">LTSpice</span>
+        <span class="tech">CST Studio</span>
+        <span class="tech">Siemens Capital</span>
+        <span class="tech">ESP32</span>
+        <span class="tech">Raspberry Pi</span>
+        <span class="tech">PCB Design</span>
+        <span class="tech">Oscilloscope</span>
+        <span class="tech">VNA</span>
+        <span class="tech">3D Printing</span>
+      </div>
+      <p class="center-note">...and a whole RF bench.</p>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="section" id="contact">
+      <h2>Contact me<span class="cursor">_</span></h2>
+      <p class="section-sub">I'm always open to interesting projects, research, and opportunities.
+        If you'd like to work together — or just want to talk radios, rockets, or racks of
+        GPUs — send me a message.</p>
+
+      <div class="contact-grid">
+        <!-- Opens the visitor's mail client with the message prefilled -->
+        <form class="contact-form" id="contact-form">
+          <div class="form-row">
+            <input type="text" id="cf-name" placeholder="Name*" required />
+            <input type="email" id="cf-email" placeholder="Email*" required />
+          </div>
+          <textarea id="message" maxlength="500" placeholder="Message*" required></textarea>
+          <div class="char-count"><span id="char-count">0</span>/500 characters</div>
+          <button class="btn primary" type="submit">Send</button>
+        </form>
+
+        <div class="socials">
+          <p class="chip small">OR CONTACT ME WITH...</p>
+          <a href="mailto:holden.dao@utah.edu">Email</a>
+          <a href="https://www.linkedin.com/in/holdendao" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://github.com/holdenjdao" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 Holden Dao &middot; holdenjdao</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
