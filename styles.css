@@ -380,6 +380,9 @@ h2 { font-size: clamp(24px, 4vw, 34px); font-weight: 800; margin-bottom: 10px; }
 .char-count { color: var(--muted); font-size: 11px; text-align: right; }
 
 .contact-form .btn { align-self: flex-start; }
+.contact-form .btn:disabled { opacity: 0.6; cursor: wait; transform: none; }
+
+.form-status { font-size: 13px; color: var(--text); min-height: 1.2em; }
 
 .socials {
   background: var(--card);

@@ -299,7 +299,7 @@
         GPUs — send me a message.</p>
 
       <div class="contact-grid">
-        <!-- Opens the visitor's mail client with the message prefilled -->
+        <!-- Sends directly via Web3Forms (the access key is public by design) -->
         <form class="contact-form" id="contact-form">
           <div class="form-row">
             <input type="text" id="cf-name" placeholder="Name*" required />
@@ -307,7 +307,9 @@
           </div>
           <textarea id="message" maxlength="500" placeholder="Message*" required></textarea>
           <div class="char-count"><span id="char-count">0</span>/500 characters</div>
+          <input type="checkbox" id="cf-botcheck" tabindex="-1" autocomplete="off" hidden />
           <button class="btn primary" type="submit">Send</button>
+          <p class="form-status" id="form-status" role="status"></p>
         </form>
 
         <div class="socials">

@@ -144,17 +144,45 @@ function setStat(key, value) {
   }
 })();
 
-/* ============ Contact form -> mailto ============ */
+/* ============ Contact form -> Web3Forms ============ */
+const WEB3FORMS_KEY = "bb55b909-c6c1-4dd8-9168-90d5603950c9"; // public by design
 const form = document.getElementById("contact-form");
 if (form) {
-  form.addEventListener("submit", (e) => {
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const name = document.getElementById("cf-name").value.trim();
     const email = document.getElementById("cf-email").value.trim();
     const msg = document.getElementById("message").value.trim();
-    const subject = encodeURIComponent(`Portfolio message from ${name}`);
-    const body = encodeURIComponent(`${msg}\n\n— ${name} (${email})`);
-    location.href = `mailto:holden.dao@utah.edu?subject=${subject}&body=${body}`;
+    const status = document.getElementById("form-status");
+    const btn = form.querySelector("button[type=submit]");
+    btn.disabled = true;
+    btn.textContent = "Sending...";
+    status.textContent = "";
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: `Portfolio message from ${name}`,
+          name,
+          email,
+          message: msg,
+          botcheck: document.getElementById("cf-botcheck").checked,
+        }),
+      });
+      const data = await res.json();
+      if (!data.success) throw new Error(data.message || "send failed");
+      status.textContent = "Message sent ✓";
+      form.reset();
+      const counter = document.getElementById("char-count");
+      if (counter) counter.textContent = "0";
+    } catch {
+      status.textContent = "Something went wrong — please email me directly at holden.dao@utah.edu";
+    } finally {
+      btn.disabled = false;
+      btn.textContent = "Send";
+    }
   });
 }
 
