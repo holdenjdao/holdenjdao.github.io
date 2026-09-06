@@ -272,6 +272,10 @@ h2 { font-size: clamp(24px, 4vw, 34px); font-weight: 800; margin-bottom: 10px; }
   display: block;
 }
 
+/* full-bleed logo tile (colored-square logos like Korn Ferry) */
+.xp-logo.fill { padding: 0; background: none; overflow: hidden; }
+.xp-logo.fill img { height: 46px; width: 46px; max-height: none; max-width: none; }
+
 .xp-card h3 { font-size: 17px; }
 .xp-company { color: var(--text); font-size: 13px; font-weight: 700; }
 .xp-meta { color: var(--muted); font-size: 12px; }
