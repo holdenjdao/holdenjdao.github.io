@@ -9,7 +9,8 @@
   --border-strong: #46515e;
   --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.32);
   --text: #eceef1;
-  --muted: #9aa3af;
+  --muted: #b9c1cc;
+  --text-body: #dde2e8;
   --accent: #3fa9d1;          /* sky from the SR-71 avatar */
   --accent-soft: rgba(63, 169, 209, 0.14);
   --on-accent: #06171f;
@@ -35,7 +36,8 @@
   --border-strong: #a9b3c1;
   --shadow: 0 1px 2px rgba(15, 23, 32, 0.06), 0 8px 24px rgba(15, 23, 32, 0.07);
   --text: #131820;
-  --muted: #566070;
+  --muted: #434b59;
+  --text-body: #232a35;
   --accent: #14719a;          /* sky from the SR-71 avatar */
   --accent-soft: rgba(20, 113, 154, 0.1);
   --on-accent: #ffffff;
@@ -50,6 +52,12 @@
   --g4: #0d5c7e;
 }
 
+/* Space Grotesk for reading, Martian Mono for the machine-facing bits. */
+:root {
+  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, "Segoe UI", sans-serif;
+  --font-mono: "Martian Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 html { scroll-behavior: smooth; overflow-x: clip; }
@@ -58,9 +66,10 @@ body {
   overflow-x: clip;
   background: var(--bg);
   color: var(--text);
-  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 15px;
-  line-height: 1.65;
+  font-family: var(--font-sans);
+  font-size: 15.5px;
+  line-height: 1.7;
+  letter-spacing: 0.1px;
 }
 
 a { color: inherit; text-decoration: none; }
@@ -150,7 +159,7 @@ h1 { font-size: clamp(28px, 5vw, 44px); font-weight: 800; margin-bottom: 14px; }
 
 .wave { display: inline-block; }
 
-.tagline { color: var(--muted); max-width: 520px; margin-bottom: 28px; }
+.tagline { color: var(--text-body); max-width: 520px; margin-bottom: 28px; }
 
 .mission-card {
   background: var(--card-2);
@@ -160,7 +169,7 @@ h1 { font-size: clamp(28px, 5vw, 44px); font-weight: 800; margin-bottom: 14px; }
   max-width: 540px;
 }
 
-.mission-card p { color: var(--muted); font-size: 13.5px; }
+.mission-card p { color: var(--text-body); font-size: 13.5px; }
 .mission-card .motto { margin-top: 10px; color: var(--text); }
 
 .stat-strip {
@@ -179,7 +188,7 @@ h1 { font-size: clamp(28px, 5vw, 44px); font-weight: 800; margin-bottom: 14px; }
 
 h2 { font-size: clamp(24px, 4vw, 34px); font-weight: 800; margin-bottom: 10px; }
 
-.section-sub { color: var(--muted); margin-bottom: 28px; max-width: 640px; }
+.section-sub { color: var(--text-body); margin-bottom: 28px; max-width: 640px; }
 
 .about-card {
   background: var(--card);
@@ -192,7 +201,7 @@ h2 { font-size: clamp(24px, 4vw, 34px); font-weight: 800; margin-bottom: 10px; }
   box-shadow: var(--shadow);
 }
 
-.about-card p { color: var(--muted); }
+.about-card p { color: var(--text-body); }
 
 /* ============ Buttons ============ */
 .btn-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 10px; }
@@ -320,7 +329,7 @@ h2 { font-size: clamp(24px, 4vw, 34px); font-weight: 800; margin-bottom: 10px; }
 .xp-company { color: var(--text); font-size: 13px; font-weight: 700; }
 .xp-meta { color: var(--muted); font-size: 12px; }
 
-.xp-card ul { padding-left: 20px; color: var(--muted); font-size: 13.5px; margin-top: 6px; }
+.xp-card ul { padding-left: 20px; color: var(--text-body); font-size: 13.5px; margin-top: 6px; }
 .xp-card li { margin-bottom: 6px; }
 .xp-card li strong { color: var(--text); }
 
@@ -377,7 +386,7 @@ h2 { font-size: clamp(24px, 4vw, 34px); font-weight: 800; margin-bottom: 10px; }
   margin-right: 8px;
   background: rgba(var(--grid-line), 0.06);
 }
-.project-body > p { color: var(--muted); font-size: 13.5px; margin-top: 10px; }
+.project-body > p { color: var(--text-body); font-size: 13.5px; margin-top: 10px; }
 
 .center-note { text-align: center; color: var(--muted); margin: 26px 0 12px; }
 
@@ -519,3 +528,29 @@ h2 { font-size: clamp(24px, 4vw, 34px); font-weight: 800; margin-bottom: 10px; }
 
 :root[data-theme="dark"] .theme-toggle .icon-moon,
 :root[data-theme="light"] .theme-toggle .icon-sun { display: none; }
+
+/* ============ Typography ============ */
+h1, h2, h3 { letter-spacing: -0.5px; }
+
+.logo,
+.nav-links a,
+.chip,
+.big-label,
+.tag,
+.stat-strip,
+.contrib-count,
+.legend,
+.btn,
+.tech,
+.char-count,
+.form-status,
+.socials a,
+.footer {
+  font-family: var(--font-mono);
+  font-feature-settings: "ss01";
+}
+
+.logo { letter-spacing: -1px; }
+.chip, .big-label { letter-spacing: 1.4px; }
+.tag { letter-spacing: -0.2px; }
+.nav-links a { letter-spacing: -0.4px; }
