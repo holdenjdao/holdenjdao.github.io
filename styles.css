@@ -318,6 +318,10 @@ h2 { font-size: clamp(24px, 4vw, 34px); font-weight: 800; margin-bottom: 10px; }
 
 .preview-emoji { font-size: 56px; filter: grayscale(0.25); }
 
+/* screenshot previews fill the frame */
+.project-preview.shot { height: auto; padding: 0; background: #fff; }
+.project-preview.shot img { display: block; width: 100%; height: auto; }
+
 .project-body { padding: 26px 28px; }
 .project-body h3 { font-size: 17px; margin-bottom: 4px; }
 .project-body > p { color: var(--muted); font-size: 13.5px; margin-top: 10px; }
