@@ -389,8 +389,9 @@ h2 { font-size: clamp(24px, 4vw, 34px); font-weight: 800; margin-bottom: 10px; }
 }
 
 .tech-ico {
-  width: 15px;
   height: 15px;
+  width: calc(15px * var(--ar, 1));
+  max-width: 40px;
   flex: 0 0 auto;
   fill: currentColor;
   opacity: 0.75;
