@@ -10,10 +10,20 @@ const GITHUB_USER = "holdenjdao";
   const ctx = canvas.getContext("2d");
 
   const CELL = 44;          // grid cell size in px
-  const RADIUS = 3.2;       // cursor glow radius, in cells
-  const DECAY = 0.945;      // per-frame brightness decay
-  const MAX_FILL = 0.085;   // peak fill alpha (keep it subtle)
-  const MAX_STROKE = 0.22;  // peak outline alpha
+  const RADIUS = 3.6;       // cursor glow radius, in cells
+  const DECAY = 0.93;       // per-frame brightness decay
+  const MAX_FILL = 0.035;   // peak fill alpha (kept faint on purpose)
+  const MAX_STROKE = 0.085; // peak outline alpha
+  const LINE_ALPHA = 0.03;  // resting grid line alpha
+
+  // Grid ink follows the active theme: white on dark, near-black on light.
+  let ink = "255, 255, 255";
+  function readInk() {
+    const v = getComputedStyle(document.documentElement).getPropertyValue("--grid-line").trim();
+    if (v) ink = v;
+  }
+  readInk();
+  addEventListener("themechange", () => { readInk(); drawStatic(); start(); });
 
   let cols = 0, rows = 0, cells = [];
   let mouseX = -1e4, mouseY = -1e4;
@@ -32,7 +42,7 @@ const GITHUB_USER = "holdenjdao";
 
   function drawStatic() {
     ctx.clearRect(0, 0, innerWidth, innerHeight);
-    ctx.strokeStyle = "rgba(255, 255, 255, 0.032)";
+    ctx.strokeStyle = `rgba(${ink}, ${LINE_ALPHA})`;
     ctx.lineWidth = 1;
     ctx.beginPath();
     for (let x = 0; x <= cols; x++) { ctx.moveTo(x * CELL + 0.5, 0); ctx.lineTo(x * CELL + 0.5, innerHeight); }
@@ -67,9 +77,9 @@ const GITHUB_USER = "holdenjdao";
         if (b < 0.005) { cells[i] = 0; continue; }
         alive = true;
         cells[i] = b * DECAY;
-        ctx.fillStyle = `rgba(255, 255, 255, ${(b * MAX_FILL).toFixed(4)})`;
+        ctx.fillStyle = `rgba(${ink}, ${(b * MAX_FILL).toFixed(4)})`;
         ctx.fillRect(x * CELL + 1, y * CELL + 1, CELL - 1, CELL - 1);
-        ctx.strokeStyle = `rgba(255, 255, 255, ${(b * MAX_STROKE).toFixed(4)})`;
+        ctx.strokeStyle = `rgba(${ink}, ${(b * MAX_STROKE).toFixed(4)})`;
         ctx.strokeRect(x * CELL + 0.5, y * CELL + 0.5, CELL, CELL);
       }
     }
@@ -85,12 +95,12 @@ const GITHUB_USER = "holdenjdao";
 
   addEventListener("mousemove", (e) => {
     mouseX = e.clientX; mouseY = e.clientY;
-    light(mouseX, mouseY, 0.55);
+    light(mouseX, mouseY, 0.3);
   }, { passive: true });
 
   // gentle ambient flickers (visible on touch devices too)
   setInterval(() => {
-    light(Math.random() * innerWidth, Math.random() * innerHeight, 0.35);
+    light(Math.random() * innerWidth, Math.random() * innerHeight, 0.22);
   }, 1400);
 
   addEventListener("resize", resize);
@@ -214,3 +224,30 @@ const observer = new IntersectionObserver(
   { rootMargin: "-40% 0px -55% 0px" }
 );
 sections.forEach((s) => observer.observe(s));
+
+/* ============ Theme toggle ============ */
+(function themeToggle() {
+  const root = document.documentElement;
+  const btn = document.getElementById("theme-toggle");
+  if (!btn) return;
+
+  const apply = (theme) => {
+    root.setAttribute("data-theme", theme);
+    btn.setAttribute("aria-label", theme === "dark" ? "Switch to light theme" : "Switch to dark theme");
+    dispatchEvent(new CustomEvent("themechange", { detail: theme }));
+  };
+
+  apply(root.getAttribute("data-theme") || "dark");
+
+  btn.addEventListener("click", () => {
+    const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    apply(next);
+    try { localStorage.setItem("theme", next); } catch { /* private mode */ }
+  });
+
+  // Follow the OS only while the visitor has not picked a theme themselves.
+  matchMedia("(prefers-color-scheme: light)").addEventListener("change", (e) => {
+    try { if (localStorage.getItem("theme")) return; } catch { /* private mode */ }
+    apply(e.matches ? "light" : "dark");
+  });
+})();
