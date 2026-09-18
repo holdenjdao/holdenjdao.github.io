@@ -6,6 +6,7 @@
   --card-2: #222830;
   --surface: rgba(255, 255, 255, 0.04);
   --border: #333b45;
+  --border-outer: #262d37;
   --border-strong: #46515e;
   --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.32);
   --text: #eceef1;
@@ -33,6 +34,7 @@
   --card-2: #f3f5f8;
   --surface: rgba(15, 23, 32, 0.04);
   --border: #cbd2dc;
+  --border-outer: #b1bac7;
   --border-strong: #a9b3c1;
   --shadow: 0 1px 2px rgba(15, 23, 32, 0.06), 0 8px 24px rgba(15, 23, 32, 0.07);
   --text: #131820;
@@ -100,7 +102,7 @@ img { max-width: 100%; }
   z-index: 10;
   backdrop-filter: blur(10px);
   background: var(--nav-bg);
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--border-outer);
 }
 
 .nav {
@@ -134,7 +136,7 @@ main { max-width: 960px; margin: 0 auto; padding: 0 24px; }
 
 .hero-card {
   background: var(--card);
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-outer);
   box-shadow: var(--shadow);
   border-radius: 16px;
   padding: 48px 40px;
@@ -184,7 +186,7 @@ h1 { font-size: clamp(28px, 5vw, 44px); font-weight: 800; margin-bottom: 14px; }
 .stat-num { color: var(--text); font-weight: 700; }
 
 /* ============ Sections ============ */
-.section { padding: 56px 0; border-top: 1px solid var(--border); }
+.section { padding: 56px 0; border-top: 1px solid var(--border-outer); }
 
 h2 { font-size: clamp(24px, 4vw, 34px); font-weight: 800; margin-bottom: 10px; }
 
@@ -192,7 +194,7 @@ h2 { font-size: clamp(24px, 4vw, 34px); font-weight: 800; margin-bottom: 10px; }
 
 .about-card {
   background: var(--card);
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-outer);
   border-radius: 16px;
   padding: 32px;
   display: flex;
@@ -238,7 +240,7 @@ h2 { font-size: clamp(24px, 4vw, 34px); font-weight: 800; margin-bottom: 10px; }
   overflow-x: auto;
   padding: 16px;
   background: var(--card);
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-outer);
   border-radius: 12px;
   box-shadow: var(--shadow);
 }
@@ -276,7 +278,7 @@ h2 { font-size: clamp(24px, 4vw, 34px); font-weight: 800; margin-bottom: 10px; }
 
 .big-stat {
   background: var(--card);
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-outer);
   border-radius: 12px;
   padding: 22px;
   text-align: center;
@@ -289,7 +291,7 @@ h2 { font-size: clamp(24px, 4vw, 34px); font-weight: 800; margin-bottom: 10px; }
 /* ============ Experience / Education ============ */
 .xp-card {
   background: var(--card);
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-outer);
   box-shadow: var(--shadow);
   border-radius: 16px;
   padding: 28px;
@@ -347,7 +349,7 @@ h2 { font-size: clamp(24px, 4vw, 34px); font-weight: 800; margin-bottom: 10px; }
 /* ============ Projects ============ */
 .project-card {
   background: var(--card);
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-outer);
   box-shadow: var(--shadow);
   border-radius: 16px;
   overflow: hidden;
@@ -401,7 +403,7 @@ h2 { font-size: clamp(24px, 4vw, 34px); font-weight: 800; margin-bottom: 10px; }
   gap: 8px;
   padding: 8px 16px;
   background: var(--card);
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-outer);
   border-radius: 10px;
   font-size: 13px;
   color: var(--muted);
@@ -430,7 +432,7 @@ h2 { font-size: clamp(24px, 4vw, 34px); font-weight: 800; margin-bottom: 10px; }
 
 .contact-form {
   background: var(--card);
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-outer);
   border-radius: 16px;
   padding: 26px;
   display: flex;
@@ -469,7 +471,7 @@ h2 { font-size: clamp(24px, 4vw, 34px); font-weight: 800; margin-bottom: 10px; }
 
 .socials {
   background: var(--card);
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-outer);
   border-radius: 16px;
   padding: 26px;
   display: flex;
@@ -492,7 +494,7 @@ h2 { font-size: clamp(24px, 4vw, 34px); font-weight: 800; margin-bottom: 10px; }
 
 /* ============ Footer ============ */
 .footer {
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--border-outer);
   padding: 28px 24px;
   text-align: center;
   color: var(--muted);
