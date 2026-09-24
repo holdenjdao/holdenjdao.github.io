@@ -5,12 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Holden Dao</title>
   <meta name="description" content="Holden Dao — Electrical Engineering student at the University of Utah building embedded systems, RF projects, and AI infrastructure." />
-  <link rel="icon" type="image/png" href="assets/favicon.png" />
-  <link rel="apple-touch-icon" href="assets/favicon.png" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=4" />
+  <link rel="icon" type="image/png" sizes="180x180" href="assets/favicon.png?v=4" />
+  <link rel="apple-touch-icon" href="assets/favicon.png?v=4" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@400;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=7" />
+  <link rel="stylesheet" href="styles.css?v=15" />
 </head>
 <script>
   (function () {
@@ -53,16 +54,65 @@
     <!-- ============ HERO ============ -->
     <section class="hero" id="home">
       <div class="hero-card">
-        <span class="chip">&#8853; ABOUT ME</span>
-        <h1>Hey, I'm Holden <span class="wave">&#128075;</span></h1>
-        <p class="tagline">Electrical Engineering student at the University of Utah building
-          embedded systems, RF ground stations, and AI infrastructure.</p>
+        <div class="hero-text">
+          <div class="hero-label">
+            <a class="avatar-link" href="https://github.com/holdenjdao" target="_blank" rel="noopener" aria-label="Holden's GitHub profile">
+              <img src="assets/avatar.jpg" alt="" width="40" height="40" />
+            </a>
+            <span class="chip">&#8853; ABOUT ME</span>
+          </div>
+          <h1>Hey, I'm Holden.</h1>
+          <p class="tagline">Electrical Engineering student at the University of Utah building
+            embedded systems, AI infrastructure, and RF integrated circuits.</p>
 
-        <div class="mission-card">
-          <span class="chip small">&#9889; MY MISSION</span>
-          <p>Bridging hardware and software — from PCB traces and RF front-ends to
-            production AI pipelines.</p>
+          <div class="mission-card">
+            <span class="chip small">&#9889; MY MISSION</span>
+            <p>Bridging hardware and software to develop intelligent AI models and
+              agentic systems.</p>
+          </div>
         </div>
+
+        <!-- Rotating screenshots of featured projects (driven by script.js) -->
+        <figure class="showcase" aria-roledescription="carousel" aria-label="Project screenshots">
+          <span class="chip small">&#9635; MY WORK</span>
+          <div class="showcase-frame">
+            <a class="showcase-slide is-active" href="#dori" data-project="Dori" data-page="Landing page">
+              <img src="assets/dori-landing.jpg" alt="Dori's landing page with Capy the capybara" />
+            </a>
+            <a class="showcase-slide" href="#dori" data-project="Dori" data-page="Student learning path">
+              <img src="assets/showcase/dori-path.jpg" alt="Dori's student view: a learning path of subjects and steps" loading="lazy" />
+            </a>
+            <a class="showcase-slide" href="#dori" data-project="Dori" data-page="Teacher classroom">
+              <img src="assets/showcase/dori-classroom.jpg" alt="Dori's teacher view: a classroom of learners grouped by progress" loading="lazy" />
+            </a>
+            <a class="showcase-slide" href="#dori" data-project="Dori" data-page="Collaborative globe game">
+              <img src="assets/showcase/dori-globe-game.jpg" alt="Dori's collaborative geography game with a world map" loading="lazy" />
+            </a>
+            <a class="showcase-slide" href="#carecart" data-project="CareCart" data-page="Public request form">
+              <img src="assets/showcase/carecart-form.jpg" alt="CareCart's bilingual community request form" loading="lazy" />
+            </a>
+            <a class="showcase-slide" href="#carecart" data-project="CareCart" data-page="Triaged request queue">
+              <img src="assets/carecart-queue.png" alt="CareCart's staff queue of requests with AI-assigned priority" loading="lazy" />
+            </a>
+            <a class="showcase-slide" href="#carecart" data-project="CareCart" data-page="Request detail with AI analysis">
+              <img src="assets/showcase/carecart-detail.jpg" alt="CareCart's request detail page with the AI analysis panel" loading="lazy" />
+            </a>
+            <a class="showcase-slide" href="#carecart" data-project="CareCart" data-page="Analytics dashboard">
+              <img src="assets/showcase/carecart-analytics.jpg" alt="CareCart's analytics dashboard with request status and type charts" loading="lazy" />
+            </a>
+          </div>
+          <figcaption class="showcase-bar">
+            <span class="showcase-caption" aria-live="polite">
+              <strong class="showcase-project">Dori</strong>
+              <span class="showcase-page">Landing page</span>
+            </span>
+            <span class="showcase-controls">
+              <button type="button" class="showcase-btn" data-dir="-1" aria-label="Previous screenshot">&#8249;</button>
+              <span class="showcase-dots" role="tablist" aria-label="Choose screenshot"></span>
+              <button type="button" class="showcase-btn" data-dir="1" aria-label="Next screenshot">&#8250;</button>
+            </span>
+          </figcaption>
+        </figure>
       </div>
 
       <!-- Live GitHub stats (fetched client-side; falls back to dashes offline) -->
@@ -71,25 +121,6 @@
         <div class="stat"><span class="stat-num" data-stat="contributions">–</span> contributions</div>
         <div class="stat"><span class="stat-num" data-stat="repos">–</span> repositories</div>
         <div class="stat"><span class="stat-num" data-stat="followers">–</span> GitHub followers</div>
-      </div>
-    </section>
-
-    <!-- ============ ABOUT ============ -->
-    <section class="section" id="about">
-      <h2>About me<span class="cursor">_</span></h2>
-      <div class="about-card">
-        <p>I'm an Electrical Engineering major with a Computer Science minor at the
-          University of Utah (Class of 2028), currently working as a Product Engineer
-          at the Utah AI Lab.</p>
-        <p>My path so far has run from quantifying traumatic brain injuries in a research
-          lab, to designing PCBs for the U.S. Air Force, to building multi-agent LLM
-          inference infrastructure — I like working wherever hardware meets software.</p>
-        <p>When I'm not in the lab, I'm probably pulling weather-satellite imagery out of
-          the sky with an antenna I built myself.</p>
-        <div class="btn-row">
-          <a class="btn primary" href="https://github.com/holdenjdao" target="_blank" rel="noopener">View my GitHub</a>
-          <a class="btn ghost" href="#contact">Contact me</a>
-        </div>
       </div>
     </section>
 
@@ -228,7 +259,7 @@
       <h2>Featured Projects<span class="cursor">_</span></h2>
       <p class="section-sub">Hands-on builds where the software has to survive contact with real hardware.</p>
 
-      <article class="project-card">
+      <article class="project-card" id="dori">
         <div class="project-preview shot">
           <img src="assets/dori-landing.jpg" alt="Dori's landing page: Capy the capybara beside the headline &quot;Learning that listens to every kid.&quot;" loading="lazy" />
         </div>
@@ -255,7 +286,7 @@
         </div>
       </article>
 
-      <article class="project-card">
+      <article class="project-card" id="carecart">
         <div class="project-preview shot">
           <img src="assets/carecart-queue.png" alt="CareCart's staff dashboard: a queue of community health requests with type, resources, AI-assigned priority, and status." loading="lazy" />
         </div>
@@ -343,23 +374,6 @@
         </div>
       </article>
 
-      <article class="project-card">
-        <div class="project-preview"><span class="preview-emoji">&#127760;</span></div>
-        <div class="project-body">
-          <h3>Portfolio</h3>
-          <p class="xp-meta">Front End &middot; GitHub Pages</p>
-          <p>This site. Hand-written HTML, CSS, and JavaScript with no framework and no build
-            step, deployed straight from the repository to GitHub Pages.</p>
-          <div class="tag-row">
-            <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
-            <span class="tag">GitHub Pages</span>
-          </div>
-          <div class="btn-row">
-            <a class="btn ghost" href="https://github.com/holdenjdao/holdenjdao.github.io" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </div>
-      </article>
-
       <p class="center-note">Want to see more?</p>
       <div class="btn-row center">
         <a class="btn ghost" href="https://github.com/holdenjdao?tab=repositories" target="_blank" rel="noopener">More Projects</a>
@@ -396,7 +410,6 @@
         <span class="tech">VNA</span>
         <span class="tech">3D Printing</span>
       </div>
-      <p class="center-note">...and a whole RF bench.</p>
     </section>
 
     <!-- ============ CONTACT ============ -->
@@ -434,6 +447,6 @@
     <p>&copy; 2026 Holden Dao &middot; holdenjdao</p>
   </footer>
 
-  <script src="script.js?v=7"></script>
+  <script src="script.js?v=9"></script>
 </body>
 </html>

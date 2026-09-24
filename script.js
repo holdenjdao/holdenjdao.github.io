@@ -213,7 +213,7 @@ const observer = new IntersectionObserver(
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return;
       let id = entry.target.id;
-      if (id === "about" || id === "activity") id = "home";
+      if (id === "activity") id = "home";
       if (id === "education") id = "experience";
       if (id === "tech") id = "projects";
       navLinks.forEach((link) => {
@@ -250,4 +250,66 @@ sections.forEach((s) => observer.observe(s));
     try { if (localStorage.getItem("theme")) return; } catch { /* private mode */ }
     apply(e.matches ? "light" : "dark");
   });
+})();
+
+/* ============ Hero project showcase ============
+   Cross-fades through project screenshots. Pauses while hovered or
+   focused, when the tab is hidden, and never auto-advances for
+   visitors who prefer reduced motion. */
+(function projectShowcase() {
+  const root = document.querySelector(".showcase");
+  if (!root) return;
+
+  const slides = [...root.querySelectorAll(".showcase-slide")];
+  const dotsEl = root.querySelector(".showcase-dots");
+  const projectEl = root.querySelector(".showcase-project");
+  const pageEl = root.querySelector(".showcase-page");
+  const INTERVAL = 4500;
+  const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  let index = 0, timer = null, paused = false;
+
+  const dots = slides.map((slide, i) => {
+    const dot = document.createElement("button");
+    dot.type = "button";
+    dot.className = "showcase-dot";
+    dot.setAttribute("role", "tab");
+    dot.setAttribute("aria-label", `${slide.dataset.project}: ${slide.dataset.page}`);
+    dot.addEventListener("click", () => { show(i); restart(); });
+    dotsEl.appendChild(dot);
+    return dot;
+  });
+
+  function show(i) {
+    index = (i + slides.length) % slides.length;
+    slides.forEach((s, j) => {
+      const active = j === index;
+      s.classList.toggle("is-active", active);
+      s.tabIndex = active ? 0 : -1;
+      s.setAttribute("aria-hidden", String(!active));
+    });
+    dots.forEach((d, j) => d.setAttribute("aria-selected", String(j === index)));
+    projectEl.textContent = slides[index].dataset.project;
+    pageEl.textContent = slides[index].dataset.page;
+  }
+
+  function restart() {
+    clearInterval(timer);
+    if (reduceMotion || paused || document.hidden) return;
+    timer = setInterval(() => show(index + 1), INTERVAL);
+  }
+
+  root.querySelectorAll(".showcase-btn").forEach((btn) =>
+    btn.addEventListener("click", () => { show(index + Number(btn.dataset.dir)); restart(); })
+  );
+
+  const pause = (p) => () => { paused = p; restart(); };
+  root.addEventListener("mouseenter", pause(true));
+  root.addEventListener("mouseleave", pause(false));
+  root.addEventListener("focusin", pause(true));
+  root.addEventListener("focusout", pause(false));
+  document.addEventListener("visibilitychange", restart);
+
+  show(0);
+  restart();
 })();
