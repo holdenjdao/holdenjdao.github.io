@@ -209,6 +209,10 @@ main { max-width: 960px; margin: 0 auto; padding: 0 24px; }
   object-position: top left;
 }
 
+/* wide renders and schematics show whole instead of cropping */
+.showcase-slide.fit img { object-fit: contain; object-position: center; }
+.showcase-slide.on-dark { background: #000; }
+
 .showcase-slide:focus-visible { outline: 2px solid var(--accent); outline-offset: -4px; }
 
 .showcase-bar {

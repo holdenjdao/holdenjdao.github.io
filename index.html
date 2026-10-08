@@ -100,6 +100,12 @@
             <a class="showcase-slide" href="#carecart" data-project="CareCart" data-page="Analytics dashboard">
               <img src="assets/showcase/carecart-analytics.jpg" alt="CareCart's analytics dashboard with request status and type charts" loading="lazy" />
             </a>
+            <a class="showcase-slide fit on-dark" href="#emergency-button" data-project="Emergency Button" data-page="PCB render">
+              <img src="assets/emergency-button-top.png" alt="Top view of the Emergency Button PCB: USB-C, ESP32-C3 module, and GNSS patch antenna" loading="lazy" />
+            </a>
+            <a class="showcase-slide fit" href="#emergency-button" data-project="Emergency Button" data-page="Schematic">
+              <img src="assets/showcase/emergency-button-schematic.png" alt="Emergency Button schematic covering the MCU, GNSS, USB-C, and power path" loading="lazy" />
+            </a>
           </div>
           <figcaption class="showcase-bar">
             <span class="showcase-caption" aria-live="polite">
@@ -313,6 +319,32 @@
         </div>
       </article>
 
+      <article class="project-card" id="emergency-button">
+        <div class="project-preview shot">
+          <img src="assets/emergency-button-top.png" alt="3D render of the Emergency Button PCB: USB-C connector, emergency push button, ESP32-C3 module, and L86 GNSS patch antenna on a blue board." loading="lazy" />
+        </div>
+        <div class="project-body">
+          <h3>Emergency Button &mdash; ESP32-C3 GNSS Board</h3>
+          <p class="xp-meta">PCB Design &middot; Embedded Hardware</p>
+          <p>A custom PCB that pairs an ESP32-C3 with a Quectel L86 GNSS module behind a single
+            emergency push button, running from a coin cell or USB-C. A TPS61099 boost converter
+            lifts the cell to 3.3 V, a TLV757 LDO handles USB power, and an LM66100 ideal diode
+            switches between the two. The ESP32-C3's native USB Serial/JTAG handles programming,
+            so the board needs no USB-to-UART bridge. The GNSS backup rail is held up through a
+            Schottky diode and capacitor for hot starts across brief power drops, the button is
+            debounced in hardware, and the U.FL antenna path carries a pi-match footprint for
+            tuning. Designed in EasyEDA Pro, with Gerbers, an LCSC-numbered BOM, pick-and-place,
+            and a STEP model ready for JLCPCB assembly.</p>
+          <div class="tag-row">
+            <span class="tag">PCB Design</span><span class="tag">EasyEDA Pro</span><span class="tag">ESP32-C3</span>
+            <span class="tag">GNSS</span><span class="tag">USB-C</span><span class="tag">Power Design</span>
+          </div>
+          <div class="btn-row">
+            <a class="btn primary" href="https://github.com/holdenjdao/emergency-button" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+      </article>
+
       <article class="project-card">
         <div class="project-preview"><span class="preview-emoji">&#128752;&#65039;</span></div>
         <div class="project-body">
@@ -399,6 +431,7 @@
         <span class="tech"><svg class="tech-ico" style="--ar:1.094" aria-hidden="true"><use href="#i-matlab"/></svg>MATLAB</span>
         <span class="tech"><svg class="tech-ico" style="--ar:2.555" aria-hidden="true"><use href="#i-kicad"/></svg>KiCAD</span>
         <span class="tech">Altium Designer</span>
+        <span class="tech">EasyEDA Pro</span>
         <span class="tech"><svg class="tech-ico" style="--ar:1.593" aria-hidden="true"><use href="#i-labview"/></svg>LabVIEW</span>
         <span class="tech"><svg class="tech-ico" style="--ar:1.409" aria-hidden="true"><use href="#i-ltspice"/></svg>LTSpice</span>
         <span class="tech"><svg class="tech-ico" style="--ar:0.945" aria-hidden="true"><use href="#i-cst"/></svg>CST Studio</span>
