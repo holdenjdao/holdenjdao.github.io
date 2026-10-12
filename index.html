@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=17" />
+  <link rel="stylesheet" href="styles.css?v=18" />
 </head>
 <script>
   (function () {
@@ -272,15 +272,7 @@
         <div class="project-body">
           <h3>Emergency Button &mdash; ESP32-C3 GNSS Board</h3>
           <p class="xp-meta">PCB Design &middot; Embedded Hardware</p>
-          <p>A custom PCB that pairs an ESP32-C3 with a Quectel L86 GNSS module behind a single
-            emergency push button, running from a coin cell or USB-C. A TPS61099 boost converter
-            lifts the cell to 3.3 V, a TLV757 LDO handles USB power, and an LM66100 ideal diode
-            switches between the two. The ESP32-C3's native USB Serial/JTAG handles programming,
-            so the board needs no USB-to-UART bridge. The GNSS backup rail is held up through a
-            Schottky diode and capacitor for hot starts across brief power drops, the button is
-            debounced in hardware, and the U.FL antenna path carries a pi-match footprint for
-            tuning. Designed in EasyEDA Pro, with Gerbers, an LCSC-numbered BOM, pick-and-place,
-            and a STEP model ready for JLCPCB assembly.</p>
+          <p>A custom PCB pairing an ESP32-C3 with a Quectel L86 GNSS module behind a single emergency button, powered from a coin cell or USB-C through a boost converter, LDO, and ideal-diode switchover. Designed in EasyEDA Pro with Gerbers, BOM, and pick-and-place files ready for JLCPCB assembly.</p>
           <div class="tag-row">
             <span class="tag">PCB Design</span><span class="tag">EasyEDA Pro</span><span class="tag">ESP32-C3</span>
             <span class="tag">GNSS</span><span class="tag">USB-C</span><span class="tag">Power Design</span>
@@ -298,15 +290,7 @@
         <div class="project-body">
           <h3>Dori — Accessible K-12 Learning Platform</h3>
           <p class="xp-meta"><span class="award">&#129353; 3rd Place</span> Minds and Machines AWS Hackathon &middot; Sep 2026</p>
-          <p>A practice platform for students with IEPs and 504 plans, built around one shared
-            plan for the learner, the teacher, and the family. The learner model is deliberately
-            not an LLM — item-aware Bayesian knowledge tracing (KT-IDEM) in NumPy with next-question
-            selection by maximum Fisher information, so any claim about a child's learning stays
-            inspectable. Written content comes from RAG pipelines over an approved corpus, with
-            Claude on Amazon Bedrock using forced tool use so replies are typed objects and every
-            citation is verified against its source. Eight collaborative games run over a shared
-            WebSocket room, and no identity ever reaches a model. Built to WCAG 2.2 AA with
-            read-aloud, word-level highlighting, and no numeric score shown to a child.</p>
+          <p>A practice platform for K-12 students with IEPs and 504 plans: a Bayesian knowledge-tracing learner model, content grounded by RAG over an approved corpus with Claude on Amazon Bedrock, and eight collaborative games. Built to WCAG 2.2 AA.</p>
           <div class="tag-row">
             <span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">React</span>
             <span class="tag">TypeScript</span><span class="tag">AWS Bedrock</span><span class="tag">RAG</span>
@@ -325,16 +309,7 @@
         <div class="project-body">
           <h3>CareCart &mdash; Community Health Request System</h3>
           <p class="xp-meta"><span class="award">&#129352; 2nd Place</span> Intermountain Health Generative AI Hackathon &middot; Mar 2026</p>
-          <p>An intake and fulfillment system for a children's community health team, replacing
-            an inbox and a spreadsheet. Schools, clinics, and nonprofits request free safety
-            materials and event support through one bilingual form; staff get a single queue where
-            each request arrives already triaged. Claude reads every submission alongside live
-            inventory and returns a structured classification &mdash; priority weighed across staffing
-            cost, lead time, stock, and audience scale, plus a fulfillment path and a service-area
-            check &mdash; with its reasoning shown so a coordinator can override it in one dropdown.
-            The scoring criteria are written once and shared between the model's prompt and the UI,
-            so what staff read is exactly what the model was told. Ships with analytics, inventory
-            tracking, generated calendar invites, and CSV export.</p>
+          <p>An intake and fulfillment system for a children's community health team: one bilingual request form, and a staff queue where Claude triages each request against live inventory with its reasoning shown. Includes analytics, inventory tracking, calendar invites, and CSV export.</p>
           <div class="tag-row">
             <span class="tag">Next.js</span><span class="tag">React</span><span class="tag">TypeScript</span>
             <span class="tag">Claude API</span><span class="tag">SQLite</span><span class="tag">Tailwind</span>
@@ -350,12 +325,7 @@
         <div class="project-body">
           <h3>Weather Satellite Imaging Receiver</h3>
           <p class="xp-meta">RF &middot; DSP &middot; Ground Station</p>
-          <p>A DSP pipeline built in GNU Radio and CST Studio that filters, demodulates,
-            synchronizes, decodes, and reconstructs METEOR M2-4 weather-satellite
-            transmissions into Earth imagery. The physical ground station runs on an
-            RTL-SDR with a hand-built V-dipole antenna, FIR filtering, and FM
-            demodulation — achieving &gt;90% successful image reconstruction across
-            5 continents.</p>
+          <p>A GNU Radio pipeline that demodulates and decodes METEOR M2-4 transmissions into Earth imagery, received on an RTL-SDR with a hand-built V-dipole antenna. Over 90% successful reconstructions across five continents.</p>
           <div class="tag-row">
             <span class="tag">GNU Radio</span><span class="tag">RTL-SDR</span><span class="tag">DSP</span>
             <span class="tag">CST Studio</span><span class="tag">RF</span>
@@ -371,9 +341,7 @@
         <div class="project-body">
           <h3>GPS Tracking Device</h3>
           <p class="xp-meta">Embedded &middot; Firmware</p>
-          <p>An embedded GPS tracker prototyped in C and Rust on an ESP32 with a NEO-6M
-            module, capturing real-time coordinates, speed, and altitude with 99%
-            accuracy.</p>
+          <p>An ESP32 and NEO-6M tracker written in C and Rust that logs real-time position, speed, and altitude.</p>
           <div class="tag-row">
             <span class="tag">C</span><span class="tag">Rust</span><span class="tag">ESP32</span>
             <span class="tag">NEO-6M</span><span class="tag">UART</span>
@@ -389,13 +357,7 @@
         <div class="project-body">
           <h3>Prompt Intent Taxonomy</h3>
           <p class="xp-meta">Schema &middot; AI Infrastructure</p>
-          <p>A provider-neutral schema for what a user actually wants from an AI system &mdash;
-            outcome, inputs, constraints, permissions, evidence needs, and definition of success
-            &mdash; captured separately from how the request gets executed. Holding intent apart
-            from execution lets a router pick a cheaper or simpler path and still check the result
-            against the original success criteria. Ships a JSON Schema, matched YAML and JSON
-            examples, a compact wire format for token-sensitive transport, and a validator wired
-            into CI so the examples can never drift from the schema.</p>
+          <p>A provider-neutral JSON Schema that captures what a user wants from an AI system separately from how the request is executed, with matched examples, a compact wire format, and a validator wired into CI.</p>
           <div class="tag-row">
             <span class="tag">JSON Schema</span><span class="tag">YAML</span><span class="tag">Python</span>
             <span class="tag">GitHub Actions</span>
@@ -448,7 +410,7 @@
     <!-- ============ CONTACT ============ -->
     <section class="section" id="contact">
       <h2>Contact me<span class="cursor">_</span></h2>
-      <p class="section-sub">Open to research, internships, and full-time roles in hardware and software. Send a message below.</p>
+      <p class="section-sub">I'm always open to interesting projects, research, and opportunities. Shoot me a message!</p>
 
       <div class="contact-grid">
         <!-- Sends directly via Web3Forms (the access key is public by design) -->
@@ -478,6 +440,6 @@
     <p>&copy; 2026 Holden Dao &middot; holdenjdao</p>
   </footer>
 
-  <script src="script.js?v=17"></script>
+  <script src="script.js?v=18"></script>
 </body>
 </html>

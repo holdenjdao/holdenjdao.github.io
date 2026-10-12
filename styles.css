@@ -744,3 +744,8 @@ h1, h2, h3 { letter-spacing: -0.5px; }
 
 .nav-links a { font-family: var(--font-sans); }
 .btn, .tech, .socials a { font-family: var(--font-sans); }
+
+/* ============ Scroll reveal ============ */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }

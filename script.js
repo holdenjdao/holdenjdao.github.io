@@ -405,3 +405,25 @@ sections.forEach((s) => observer.observe(s));
   resize();
   frame();
 })();
+
+
+/* ============ Scroll reveal ============
+   Section headings and cards fade and rise into place the first time they scroll into view. */
+(function scrollReveal() {
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const targets = document.querySelectorAll(
+    ".section > h2, .section > .chip, .section > .section-sub, .section > .center-note, .xp-card, .project-card, .big-stat, .contrib-graph, .contrib-count, .tech-grid, .contact-form, .socials"
+  );
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (!e.isIntersecting) continue;
+      e.target.classList.add("in");
+      io.unobserve(e.target);
+    }
+  }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+  targets.forEach((el, i) => {
+    el.classList.add("reveal");
+    el.style.transitionDelay = (i % 3) * 60 + "ms";
+    io.observe(el);
+  });
+})();
