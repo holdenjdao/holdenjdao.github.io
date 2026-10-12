@@ -313,3 +313,95 @@ sections.forEach((s) => observer.observe(s));
   show(0);
   restart();
 })();
+
+
+/* ============ Möbius strip watermark ============
+   The same wireframe strip as Hyperspace, drawn faintly in the top-right corner. It turns on its
+   own and leans toward the cursor; it never takes pointer events. */
+(function mobiusStrip() {
+  const canvas = document.getElementById("strip-bg");
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d");
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const RUNGS = 96;
+  const BAND = 0.34;
+  const LINES = 5;
+  let W = 0, H = 0, cx = 0, cy = 0, scale = 1;
+  const rot = { x: 0.9, y: 0.4, z: 0 };
+  const lean = { x: 0, y: 0 };
+  const target = { x: 0, y: 0 };
+  let ink = "255, 255, 255";
+
+  function readInk() {
+    ink = document.documentElement.getAttribute("data-theme") === "light" ? "29, 29, 31" : "255, 255, 255";
+  }
+  readInk();
+  addEventListener("themechange", readInk);
+
+  function mobius(u, v) {
+    const r = 1 + v * Math.cos(u / 2);
+    return [r * Math.cos(u), r * Math.sin(u), v * Math.sin(u / 2)];
+  }
+  function project(p) {
+    let [px, py, pz] = p;
+    const ax = rot.x + lean.x, ay = rot.y + lean.y;
+    [py, pz] = [py * Math.cos(ax) - pz * Math.sin(ax), py * Math.sin(ax) + pz * Math.cos(ax)];
+    [px, pz] = [px * Math.cos(ay) + pz * Math.sin(ay), -px * Math.sin(ay) + pz * Math.cos(ay)];
+    [px, py] = [px * Math.cos(rot.z) - py * Math.sin(rot.z), px * Math.sin(rot.z) + py * Math.cos(rot.z)];
+    const depth = 1 / (1 + pz * 0.22);
+    return { x: cx + px * scale * depth, y: cy + py * scale * depth, z: pz };
+  }
+  function resize() {
+    const rect = canvas.getBoundingClientRect();
+    const dpr = Math.min(2, devicePixelRatio || 1);
+    W = rect.width; H = rect.height;
+    canvas.width = W * dpr; canvas.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    cx = W * 0.6; cy = H * 0.45;
+    scale = Math.min(W * 0.26, H * 0.34);
+  }
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    ctx.lineCap = "round";
+    const segs = [];
+    for (let i = 0; i < RUNGS; i++) {
+      const u = (i / RUNGS) * Math.PI * 2;
+      const a = project(mobius(u, -BAND)), b = project(mobius(u, BAND));
+      segs.push({ a, b, z: (a.z + b.z) / 2, w: 1 });
+    }
+    for (let l = 0; l < LINES; l++) {
+      const v = -BAND + (2 * BAND * l) / (LINES - 1);
+      const edge = l === 0 || l === LINES - 1;
+      let prev = project(mobius(0, v));
+      for (let i = 1; i <= RUNGS * 2; i++) {
+        const p = project(mobius((i / RUNGS) * Math.PI * 2, v));
+        segs.push({ a: prev, b: p, z: (prev.z + p.z) / 2, w: edge ? 2 : 0.8 });
+        prev = p;
+      }
+    }
+    segs.sort((s, t) => s.z - t.z);
+    for (const s of segs) {
+      const shade = 0.35 + ((s.z + 1.4) / 2.8) * 0.65;
+      ctx.strokeStyle = `rgba(${ink}, ${Math.min(1, shade) * (s.w >= 2 ? 0.95 : 0.55)})`;
+      ctx.lineWidth = s.w * (0.7 + shade * 0.6);
+      ctx.beginPath();
+      ctx.moveTo(s.a.x, s.a.y);
+      ctx.lineTo(s.b.x, s.b.y);
+      ctx.stroke();
+    }
+  }
+  function frame() {
+    rot.y += 0.004;
+    lean.x += (target.x - lean.x) * 0.06;
+    lean.y += (target.y - lean.y) * 0.06;
+    draw();
+    if (!reduced) requestAnimationFrame(frame);
+  }
+  addEventListener("pointermove", (e) => {
+    target.y = ((e.clientX - innerWidth * 0.75) / innerWidth) * 0.5;
+    target.x = ((e.clientY - innerHeight * 0.3) / innerHeight) * 0.5;
+  });
+  addEventListener("resize", resize);
+  resize();
+  frame();
+})();
