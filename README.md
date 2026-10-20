@@ -5,8 +5,8 @@ Personal portfolio of Holden Dao — live at [holdenjdao.github.io](https://hold
 Plain static site: no build step, no framework.
 
 - `index.html` — all content
-- `styles.css` — monochrome theme
-- `script.js` — interactive grid background, live GitHub stats + contribution graph, contact form
+- `styles.css` — single-column reading layout, light and dark
+- `script.js` — light/dark theme toggle
 
 ## Local preview
 
